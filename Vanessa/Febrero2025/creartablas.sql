@@ -17,8 +17,23 @@ CREATE TABLE alumno(
     CURP CHAR(18) NOT NULL FOREIGN KEY REFERENCES persona(CURP),
     Clave CHAR(13) NOT NULL FOREIGN KEY REFERENCES carrera(Clave)
 )
+SELECT * FROM persona;
 CREATE TABLE docente(
     RFC VARCHAR(13) UNIQUE NOT NULL,
-    Profesion VARCHAR(60),
+    Profesion NVARCHAR(60),
     CURP CHAR(18) NOT NULL FOREIGN KEY REFERENCES persona(CURP),
 )
+CREATE TABLE administrativo(
+    CURP CHAR(18) NOT NULL FOREIGN KEY REFERENCES persona(CURP),
+)
+
+INSERT into carrera (Clave, Nombre)
+    VALUES('ITIC-2010-225', 'Ingennieria en tecnologias de la informacion y comunicacion')
+INSERT into carrera (Clave, Nombre)
+    VALUES('IMCT-2010-229', 'Sistemas computacionales')
+SELECT * FROM carrera;
+
+INSERT into persona(CURP, nombre, FechaNac,Direccion)
+    VALUES ('HERV051015MSLRMNA4', 'Vanessa', '2005-10-15','Barrancos')
+SELECT * FROM persona;
+
