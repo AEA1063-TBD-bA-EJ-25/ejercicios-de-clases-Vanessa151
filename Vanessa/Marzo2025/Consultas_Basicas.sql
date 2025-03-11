@@ -22,7 +22,7 @@ select productname, unitPrice
 
 select productname, unitPrice, categoryid
     from Products
-    where UnitPrice=30;
+    where not (UnitPrice=30);
 
 select productname, unitPrice, categoryid
     from Products
@@ -46,12 +46,39 @@ select productname, unitPrice, categoryid
 
 select productname, unitPrice, categoryid
     from Products
-    where Productname like '_a%'
+    where Productname like '_a%';
 
 select productname, unitPrice, categoryid
     from Products
-    where Productname like '[a-c]%'
+    where Productname like '[a-c]%';
 
 select productname, unitPrice, categoryid
     from Products
-    where Productname like '[a,c]%'
+    where Productname like '[a,c]%';
+
+select * from Employees 
+    where Region is null;
+
+select productname, unitPrice, categoryid
+    from Products
+    where Productname like '%C%'
+        or 
+        UnitPrice = 30;
+
+select productname, unitPrice, categoryid
+    from Products
+    where Productname like '%C%'
+        and 
+        UnitPrice = 30;
+
+select * from Products
+    where UnitPrice = 30 or unitprice=40;
+
+select * from Products
+    where UnitPrice in (30, 40);
+
+select productid, productname, unitPrice, categoryid
+    from Products
+    where UnitPrice BETWEEN 30 and 40
+        and CategoryID=2;
+
