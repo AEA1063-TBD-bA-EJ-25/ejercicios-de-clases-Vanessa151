@@ -41,5 +41,17 @@ select productname, unitPrice, categoryid
 
 select productname, unitPrice, categoryid
     from Products
-    where Productname like 'C%';
-    
+    where Productname like '%C%';
+
+
+select productname, unitPrice, categoryid
+    from Products
+    where Productname like '_a%'
+
+select productname, unitPrice, categoryid
+    from Products
+    where Productname like '[a-c]%'
+
+select productname, unitPrice, categoryid
+    from Products
+    where Productname like '[a,c]%'
