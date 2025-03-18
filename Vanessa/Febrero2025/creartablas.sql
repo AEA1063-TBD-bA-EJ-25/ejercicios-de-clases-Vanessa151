@@ -36,4 +36,6 @@ SELECT * FROM carrera;
 INSERT into persona(CURP, nombre, FechaNac,Direccion)
     VALUES ('HERV051015MSLRMNA4', 'Vanessa', '2005-10-15','Barrancos')
 SELECT * FROM persona;
+select FechaNac from persona;
 
+select SYSDATETIME();
