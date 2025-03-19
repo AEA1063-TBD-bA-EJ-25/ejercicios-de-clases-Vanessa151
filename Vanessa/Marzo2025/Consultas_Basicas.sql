@@ -82,3 +82,7 @@ select productid, productname, unitPrice, categoryid
     where UnitPrice BETWEEN 30 and 40
         and CategoryID=2;
 
+select orderid, lastname, companyname, orderdate, shippeddate,datediff(DAY, orderdate, shippeddate) from orders
+    join Employees on employees.EmployeeID= orders.EmployeeID
+    join Customers on Customers.CustomerId= orders.CustomerId
+    where orderId= 10252

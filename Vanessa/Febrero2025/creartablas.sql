@@ -39,3 +39,7 @@ SELECT * FROM persona;
 select FechaNac from persona;
 
 select SYSDATETIME();
+
+
+
+   
