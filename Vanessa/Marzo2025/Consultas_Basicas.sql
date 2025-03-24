@@ -86,3 +86,30 @@ select orderid, lastname, companyname, orderdate, shippeddate,datediff(DAY, orde
     join Employees on employees.EmployeeID= orders.EmployeeID
     join Customers on Customers.CustomerId= orders.CustomerId
     where orderId= 10252
+
+select max(UnitPrice) from Products;
+select min(UnitPrice) from Products;
+select avg(UnitPrice) from Products;
+select sum(UnitPrice) from Products;
+
+Select CategoryID, avg(Unitprice) from Products
+    GROUP BY CategoryID
+
+Select CategoryID, avg(Unitprice) AS PrecioPromedio from Products
+    GROUP BY CategoryID
+    ORDER BY PrecioPromedio DESC
+
+ 
+Select CategoryID, count(*) from Products
+    GROUP BY CategoryID
+
+Select unitprice * 1.10 from Products
+
+select COUNT(*) from Products
+    where Discontinued=1
+
+select count(*) from [Order Details]
+    WHERE [orderid] = 10250;
+
+select sum(UnitPrice*Quantity- discount*UnitPrice*Quantity)from [Order Details]
+    where OrderID=10250
