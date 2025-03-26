@@ -113,3 +113,24 @@ select count(*) from [Order Details]
 
 select sum(UnitPrice*Quantity- discount*UnitPrice*Quantity)from [Order Details]
     where OrderID=10250
+
+select sum(UnitPrice*Quantity- discount*UnitPrice*Quantity)from [Order Details] ;
+
+select sum(UnitPrice*Quantity- discount*UnitPrice*Quantity)from [Order Details] 
+    where orderDate= 1999;
+
+select sum([Order Details].UnitPrice*Quantity- discount*[Order Details].UnitPrice*Quantity)  from [Order Details] 
+ Join Products on [Order Details].ProductID=Products.ProductID
+ WHERE CategoryID=1;
+
+select sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity) AS mango from [Order Details]OD
+ Join Products P  on OD.ProductID=P.ProductID
+ WHERE CategoryID=1;
+
+SELECT CategoryID from Categories
+    where CategoryName like '%Beverages';
+
+select sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity),getDate(orderDate) mango from [Order Details]OD
+    join Orders O on O.OrderID =OD.OrderID
+    
+    WHERE OrderDate= 1997;
