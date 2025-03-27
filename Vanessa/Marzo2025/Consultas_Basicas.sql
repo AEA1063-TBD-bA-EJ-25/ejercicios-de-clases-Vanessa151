@@ -130,7 +130,28 @@ select sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity) AS mango from 
 SELECT CategoryID from Categories
     where CategoryName like '%Beverages';
 
-select sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity),getDate(orderDate) mango from [Order Details]OD
+select sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity)as  mango from [Order Details]OD
     join Orders O on O.OrderID =OD.OrderID
-    
-    WHERE OrderDate= 1997;
+    WHERE Year(OrderDate)= 1997;
+
+select sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity)as  mango from [Order Details]OD
+    join Orders O on O.OrderID =OD.OrderID
+    WHERE Year(OrderDate)= 1997;
+
+
+select datename(MONTH,[Order Details].orderDate) , categories.categotyname, sum([OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity) from [Order Details]
+     join orders on orders.OrderID= [Order Details].[OrderID]
+     join products on Products.ProductID= [Order Details].[ProductID]
+     join Categories on Categories.CategoryID= products.CategoryID
+      WHERE Year(OrderDate)= 1997;
+    group by datename(MONTH,[Order Details].orderDate), categories.categotyname
+    group by datepart (MONTH, [Order Details].orderDate), categories.categotyname ASC
+
+
+SELECT datename(month, O.OrderDate) MES, c.CategoryName, ROUND(sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity)) [tOTAL DE VENTAS] from [Order Details] as OD
+    join orders AS O on O.OrderID= OD.[OrderID]
+    join products as P on P.ProductID= OD.[ProductID]
+    join Categories as c on c.CategoryID= P.CategoryID
+    WHERE Year(OrderDate)= 1997;
+    group by datepart (MONTH, OD.orderDate),datename(MONTH,OD.orderDate), c.CategoryName
+    group by datepart (MONTH, OD.orderDate), c.CategoryName ASC;
