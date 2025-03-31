@@ -168,3 +168,19 @@ select OrderID, sum(Quantity*(1-discount)*[Order Details].UnitPrice) AS Importe 
     GROUP BY OrderID
     HAVING sum(Quantity*(1-discount)*[Order Details].UnitPrice) < 500
     ORDER by Importe
+
+--con variable
+declare @maximo money;
+select @maximo= max(UnitPrice) from Products;
+
+select ProductName from Products
+    where UnitPrice=@maximo;
+--Sin variable
+select ProductName, UnitPrice from Products
+    where UnitPrice= (select max(UnitPrice) from Products)
+
+select companyName, Orders.CustomerID from Customers
+Join Orders on Customers.CustomerID= Orders.CustomerID
+where OrderDate>'1/01/1995'
+
+select
