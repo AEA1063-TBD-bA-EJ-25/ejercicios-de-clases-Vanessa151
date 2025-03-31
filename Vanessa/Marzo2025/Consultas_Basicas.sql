@@ -148,10 +148,23 @@ select datename(MONTH,[Order Details].orderDate) , categories.categotyname, sum(
     group by datepart (MONTH, [Order Details].orderDate), categories.categotyname ASC
 
 
-SELECT datename(month, O.OrderDate) MES, c.CategoryName, ROUND(sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity)) [tOTAL DE VENTAS] from [Order Details] as OD
+SELECT datename(month, O.OrderDate) MES, c.CategoryName, sum(OD.UnitPrice*Quantity- discount*OD.UnitPrice*Quantity) AS TOTAL_DE_VENTAS from [Order Details] as OD
     join orders AS O on O.OrderID= OD.[OrderID]
     join products as P on P.ProductID= OD.[ProductID]
     join Categories as c on c.CategoryID= P.CategoryID
     WHERE Year(OrderDate)= 1997;
     group by datepart (MONTH, OD.orderDate),datename(MONTH,OD.orderDate), c.CategoryName
     group by datepart (MONTH, OD.orderDate), c.CategoryName ASC;
+
+
+select ProductID, ProductName, c.CategoryID, CategoryName from Products
+    JOIN Categories c on Products.CategoryID = c.CategoryID;
+
+SELECT FirstName, LastName, City from Employees  
+    where DATEDIFF(YEAR, BirthDate, SYSDATETIME() )<60;
+
+
+select OrderID, sum(Quantity*(1-discount)*[Order Details].UnitPrice) AS Importe from [Order Details]
+    GROUP BY OrderID
+    HAVING sum(Quantity*(1-discount)*[Order Details].UnitPrice) < 500
+    ORDER by Importe
