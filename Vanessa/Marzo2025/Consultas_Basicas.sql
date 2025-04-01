@@ -183,4 +183,7 @@ select companyName, Orders.CustomerID from Customers
 Join Orders on Customers.CustomerID= Orders.CustomerID
 where OrderDate>'1/01/1995'
 
-select
+SELECT companyName, contactName from Customers
+WHERE EXISTS (select * from Orders
+                where Customers.CustomerID= Orders.CustomerID
+                and OrderDate>'1/01/1995')
