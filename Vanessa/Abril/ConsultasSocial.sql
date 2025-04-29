@@ -13,3 +13,15 @@ select * from Highschooler H1
     where h2.grade=h1.grade-2
     
 H.name, H.grade Grado, h1.name Nombre, h1.grade grado 
+
+select h1.grade Grado,h1.name Nombre,  h1.grade Grado, h2.name Nombre  from Likes L1
+    join Highschooler H1 on l1.ID1= h1.ID
+    join likes L2 on l1.ID2=l2.ID1
+    join Highschooler H2 on L2.ID1= h2.ID
+    where l1.ID1= l2.ID2
+
+
+
+select * from Highschooler
+select * from Likes
+select * from Friend
